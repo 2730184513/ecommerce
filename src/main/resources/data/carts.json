@@ -1,0 +1,91 @@
+{
+  "U002": [
+    {
+      "productId": "P030",
+      "productName": "Memory Foam Mattress",
+      "price": 799.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+      "stock": 0
+    },
+    {
+      "productId": "P005",
+      "productName": "Luxury Hybrid Mattress",
+      "price": 999.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+      "stock": 0
+    }
+  ],
+  "U004": [
+    {
+      "productId": "P001",
+      "productName": "Nordic Fabric Sofa",
+      "price": 1299.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w\u003d400",
+      "stock": 0
+    },
+    {
+      "productId": "P006",
+      "productName": "Scandinavian Platform Bed",
+      "price": 1199.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w\u003d400",
+      "stock": 0
+    },
+    {
+      "productId": "P007",
+      "productName": "Storage Platform Bed",
+      "price": 1399.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w\u003d400",
+      "stock": 0
+    },
+    {
+      "productId": "P025",
+      "productName": "Upholstered King Bed",
+      "price": 1899.0,
+      "discount": 0.0,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?w\u003d400",
+      "stock": 0
+    }
+  ],
+  "U000": [
+    {
+      "productId": "P005",
+      "productName": "Luxury Hybrid Mattress",
+      "price": 999.0,
+      "discount": 0.2,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+      "stock": 3
+    },
+    {
+      "productId": "P008",
+      "productName": "Ergonomic Office Chair",
+      "price": 549.0,
+      "discount": 0.25,
+      "quantity": 1,
+      "imageUrl": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w\u003d400",
+      "stock": 80
+    }
+  ],
+  "U001": [
+    {
+      "productId": "P039",
+      "productName": "Gaming Desk with RGB",
+      "price": 399.0,
+      "discount": 0.0,
+      "quantity": 4,
+      "imageUrl": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w\u003d400",
+      "stock": 50
+    }
+  ]
+}

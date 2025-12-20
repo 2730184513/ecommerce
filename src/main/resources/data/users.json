@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "U000",
+      "username": "demo",
+      "password": "123456789",
+      "email": "demo@luxehome.com",
+      "phone": "1-800-000-0000",
+      "address": "Demo Address, Demo City, DC 00000",
+      "addresses": [
+        {
+          "id": "ADDR001",
+          "name": "Home",
+          "fullName": "Demo User",
+          "phone": "1-800-000-0000",
+          "address": "Demo Address",
+          "city": "Demo City",
+          "state": "DC",
+          "zipCode": "00000",
+          "isDefault": true
+        }
+      ],
+      "createdAt": "2024-01-01 00:00:00"
+    },
+    {
+      "id": "U001",
+      "username": "admin",
+      "password": "admin123",
+      "email": "admin@luxehome.com",
+      "phone": "1-800-123-4567",
+      "address": "123 Luxury Lane, New York, NY 10001",
+      "addresses": [
+        {
+          "id": "ADDR002",
+          "name": "Office",
+          "fullName": "Admin",
+          "phone": "1-800-123-4567",
+          "address": "123 Luxury Lane",
+          "city": "New York",
+          "state": "NY",
+          "zipCode": "10001",
+          "isDefault": true
+        }
+      ],
+      "createdAt": "2024-01-01 10:00:00"
+    }
+  ]
+}

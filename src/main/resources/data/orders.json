@@ -1,0 +1,202 @@
+{
+  "orders": [
+    {
+      "id": "ORD1765023960206",
+      "userId": "U002",
+      "items": [
+        {
+          "productId": "P005",
+          "productName": "Luxury Hybrid Mattress",
+          "price": 999.0,
+          "discount": 0.0,
+          "quantity": 4,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P030",
+          "productName": "Memory Foam Mattress",
+          "price": 799.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P008",
+          "productName": "Ergonomic Office Chair",
+          "price": 549.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P019",
+          "productName": "Floor Lounge Chair",
+          "price": 199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P033",
+          "productName": "Leather Recliner Chair",
+          "price": 1199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P017",
+          "productName": "Kids Study Desk Set",
+          "price": 699.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P049",
+          "productName": "Pillow Top Mattress",
+          "price": 1199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P039",
+          "productName": "Gaming Desk with RGB",
+          "price": 399.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w\u003d400",
+          "stock": 0
+        }
+      ],
+      "totalAmount": 597.0,
+      "originalTotal": 0.0,
+      "discountTotal": 0.0,
+      "status": "待支付",
+      "shippingAddress": "456 Oak Street, Los Angeles, CA 90001, penang, batu kawan 14110",
+      "paymentMethod": "credit_card",
+      "createdAt": "2025-12-06 20:26:00",
+      "contactName": "leon",
+      "contactPhone": "1-555-234-5678"
+    },
+    {
+      "id": "ORD1765024539315",
+      "userId": "U002",
+      "items": [
+        {
+          "productId": "P005",
+          "productName": "Luxury Hybrid Mattress",
+          "price": 999.0,
+          "discount": 0.0,
+          "quantity": 4,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P030",
+          "productName": "Memory Foam Mattress",
+          "price": 799.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P008",
+          "productName": "Ergonomic Office Chair",
+          "price": 549.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P019",
+          "productName": "Floor Lounge Chair",
+          "price": 199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1540574163026-643ea20ade25?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P033",
+          "productName": "Leather Recliner Chair",
+          "price": 1199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P017",
+          "productName": "Kids Study Desk Set",
+          "price": 699.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P049",
+          "productName": "Pillow Top Mattress",
+          "price": 1199.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 0
+        },
+        {
+          "productId": "P039",
+          "productName": "Gaming Desk with RGB",
+          "price": 399.0,
+          "discount": 0.0,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w\u003d400",
+          "stock": 0
+        }
+      ],
+      "totalAmount": 9039.0,
+      "originalTotal": 0.0,
+      "discountTotal": 0.0,
+      "status": "待支付",
+      "shippingAddress": "456 Oak Street, Los Angeles, CA 90001, 11, 11 111",
+      "paymentMethod": "credit_card",
+      "createdAt": "2025-12-06 20:35:39",
+      "contactName": "leon",
+      "contactPhone": "1-555-234-5678"
+    },
+    {
+      "id": "ORD1765028615466",
+      "userId": "U000",
+      "items": [
+        {
+          "productId": "P005",
+          "productName": "Luxury Hybrid Mattress",
+          "price": 999.0,
+          "discount": 0.0,
+          "quantity": 97,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 100
+        }
+      ],
+      "totalAmount": 96903.0,
+      "originalTotal": 96903.0,
+      "discountTotal": 0.0,
+      "status": "待支付",
+      "shippingAddress": "Demo Address, Demo City, DC 00000",
+      "paymentMethod": "credit_card",
+      "createdAt": "2025-12-06 21:43:35",
+      "contactName": "Demo User",
+      "contactPhone": "1-800-000-0000"
+    }
+  ]
+}
