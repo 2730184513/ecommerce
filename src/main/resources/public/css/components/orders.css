@@ -1,0 +1,45 @@
+/* Order Component Styles */
+
+.order-card {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    background: white;
+}
+
+.order-card .order-header {
+    background-color: var(--bg-light);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-status {
+    padding: 0.3rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.order-status.pending {
+    background-color: #fef3cd;
+    color: #856404;
+}
+
+.order-status.paid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.shipped {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.order-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
