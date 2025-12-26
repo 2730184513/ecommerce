@@ -1,0 +1,64 @@
+/* Form Component Styles */
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(201, 169, 97, 0.25);
+}
+
+/* Input Group */
+.input-group-text {
+    background-color: var(--bg-light);
+    border-color: var(--border-color);
+}
+
+/* Quantity Selector */
+.quantity-selector .btn {
+    padding: 0.25rem 0.5rem;
+    border-color: var(--border-color);
+}
+
+.quantity-selector .btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.quantity-selector input {
+    width: 50px;
+    text-align: center;
+}
+
+/* Payment Options */
+.payment-option {
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.payment-option:hover {
+    border-color: var(--accent-color);
+}
+
+.payment-option .form-check-input:checked ~ .form-check-label {
+    color: var(--accent-color);
+}
+
+/* Alert Customization */
+.alert-elegant {
+    background-color: rgba(201, 169, 97, 0.1);
+    border-color: var(--accent-color);
+    color: var(--text-dark);
+}
