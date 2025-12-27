@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - LuxeHome</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-cream">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-elegant">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-house-door-fill me-2 text-elegant"></i>LuxeHome
+            </a>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <i class="bi bi-person-circle display-4 text-elegant"></i>
+                            <h3 class="mt-2">Welcome Back</h3>
+                            <p class="text-muted">Please sign in to your account</p>
+                        </div>
+
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-danger" id="errorAlert" style="display:none;">
+                                <i class="bi bi-exclamation-circle me-2"></i>
+                                <span id="errorMessage"></span>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-elegant btn-lg" id="loginBtn">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr class="my-4">
+
+                        <div class="text-center">
+                            <p class="mb-0">Don't have an account? <a href="/register.html" class="text-elegant">Sign Up</a></p>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-light rounded">
+                            <small class="text-muted">
+                                <strong>Demo Account:</strong><br>
+                                Username: demo<br>
+                                Password: 123456789
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-elegant text-white py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-0 text-white-50">&copy; 2024 LuxeHome. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/JQuery/jquery-3.7.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>
