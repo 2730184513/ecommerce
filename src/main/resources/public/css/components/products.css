@@ -1,0 +1,57 @@
+/* Product Card Styles */
+
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.product-card .card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-card .price {
+    color: var(--accent-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.product-card .original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.product-card .card-title {
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.product-card .badge {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Rating Stars */
+.rating i {
+    color: var(--accent-color);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .product-card .card-img-top {
+        height: 160px;
+    }
+}

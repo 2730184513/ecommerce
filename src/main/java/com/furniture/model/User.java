@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 用户实体类
+* User entity class
  */
 public class User {
     private String id;
@@ -12,8 +12,8 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private String address; // 保留旧字段兼容
-    private List<Address> addresses; // 多地址支持
+    private String address; // Keep the old fields compatible
+    private List<Address> addresses; // Multi-address support
     private String createdAt;
 
     public User() {
@@ -55,24 +55,28 @@ public class User {
     public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
 
     public List<Address> getAddresses() { 
-        if (addresses == null) addresses = new ArrayList<>();
+        if (addresses == null) {
+	        addresses = new ArrayList<>();
+        }
         return addresses; 
     }
     public void setAddresses(List<Address> addresses) { this.addresses = addresses; }
 
     public void addAddress(Address addr) {
-        if (addresses == null) addresses = new ArrayList<>();
-        // 生成地址ID
+        if (addresses == null) {
+	        addresses = new ArrayList<>();
+        }
+//        Generate an address ID
         if (addr.getId() == null || addr.getId().isEmpty()) {
             addr.setId("ADDR" + System.currentTimeMillis());
         }
-        // 如果是默认地址，取消其他默认
+        // If it is the default address, cancel the other defaults
         if (addr.isDefault()) {
             for (Address a : addresses) {
                 a.setDefault(false);
             }
         }
-        // 如果是第一个地址，设为默认
+        // If it is the first address, it is set as the default
         if (addresses.isEmpty()) {
             addr.setDefault(true);
         }
@@ -89,7 +93,9 @@ public class User {
     }
 
     public Address getDefaultAddress() {
-        if (addresses == null || addresses.isEmpty()) return null;
+        if (addresses == null || addresses.isEmpty()) {
+	        return null;
+        }
         return addresses.stream().filter(Address::isDefault).findFirst().orElse(addresses.get(0));
     }
 }

@@ -1,0 +1,24 @@
+/* Navbar Component Styles */
+
+.navbar-elegant {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-elegant .navbar-brand {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.navbar-elegant .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-elegant .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.navbar-elegant .nav-link.active {
+    color: var(--accent-color) !important;
+}

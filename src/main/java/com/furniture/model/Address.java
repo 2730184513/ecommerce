@@ -1,18 +1,18 @@
 package com.furniture.model;
 
 /**
- * 地址实体类
+ * Address entity class
  */
 public class Address {
     private String id;
-    private String name;       // 地址标签（如 "Home", "Office"）
-    private String fullName;   // 收件人姓名
-    private String phone;      // 联系电话
-    private String address;    // 街道地址
-    private String city;       // 城市
-    private String state;      // 省/州
-    private String zipCode;    // 邮编
-    private boolean isDefault; // 是否默认地址
+    private String name;       // Address labels (e.g., "Home", "Office")
+    private String fullName;   // Recipient's name
+    private String phone;      // Contact number
+    private String address;    // Street address
+    private String city;       // city
+    private String state;      // province/state
+    private String zipCode;    // postcode
+    private boolean isDefault; // Whether the default address is not
 
     public Address() {}
 
@@ -57,13 +57,21 @@ public class Address {
     public boolean isDefault() { return isDefault; }
     public void setDefault(boolean aDefault) { isDefault = aDefault; }
 
-    // 获取完整地址字符串
+    // Get the full address string
     public String getFullAddress() {
         StringBuilder sb = new StringBuilder();
-        if (address != null && !address.isEmpty()) sb.append(address);
-        if (city != null && !city.isEmpty()) sb.append(", ").append(city);
-        if (state != null && !state.isEmpty()) sb.append(", ").append(state);
-        if (zipCode != null && !zipCode.isEmpty()) sb.append(" ").append(zipCode);
+        if (address != null && !address.isEmpty()) {
+	        sb.append(address);
+        }
+        if (city != null && !city.isEmpty()) {
+	        sb.append(", ").append(city);
+        }
+        if (state != null && !state.isEmpty()) {
+	        sb.append(", ").append(state);
+        }
+        if (zipCode != null && !zipCode.isEmpty()) {
+	        sb.append(" ").append(zipCode);
+        }
         return sb.toString();
     }
 }

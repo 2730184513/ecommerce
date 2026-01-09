@@ -1,7 +1,7 @@
 package com.furniture.model;
 
 /**
- * API响应包装类
+ * API response wrapper class
  */
 public class ApiResponse<T> {
     private boolean success;
@@ -17,7 +17,7 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> success(T data) {
-        return new ApiResponse<>(true, "操作成功", data);
+        return new ApiResponse<>(true, "The operation was successful", data);
     }
 
     public static <T> ApiResponse<T> success(String message, T data) {

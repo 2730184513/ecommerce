@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 import static spark.Spark.*;
 
 /**
- * 商品API控制器
+ * Product API controller
  */
 public class ProductController {
     private final DataStore dataStore;
@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     public void registerRoutes() {
-        // 获取所有商品
+        // Get all the goods
         get("/api/products", (req, res) -> {
             res.type("application/json");
             String keyword = req.queryParams("keyword");
@@ -37,7 +37,7 @@ public class ProductController {
             ));
         });
 
-        // 获取单个商品详情
+        // Get individual product listings
         get("/api/products/:id", (req, res) -> {
             res.type("application/json");
             String id = req.params(":id");
@@ -46,11 +46,11 @@ public class ProductController {
                 return gson.toJson(ApiResponse.success(product));
             } else {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("商品不存在"));
+                return gson.toJson(ApiResponse.error("The product does not exist"));
             }
         });
 
-        // 获取所有分类
+        // Get all categories
         get("/api/categories", (req, res) -> {
             res.type("application/json");
             return gson.toJson(ApiResponse.success(dataStore.getAllCategories()));

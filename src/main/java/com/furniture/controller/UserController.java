@@ -12,12 +12,12 @@ import java.util.Map;
 import static spark.Spark.*;
 
 /**
- * 用户API控制器
+ * User API controller
  */
 public class UserController {
     private final DataStore dataStore;
     private final Gson gson;
-    // 简单的会话存储（实际应用应使用更安全的方案）
+    // Simple session storage (more secure scenarios should be used for practical applications)
     private static final Map<String, String> sessions = new HashMap<>();
 
     public UserController() {
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     public void registerRoutes() {
-        // 用户登录
+        // User login
         post("/api/auth/login", (req, res) -> {
             res.type("application/json");
             Map<String, String> body = gson.fromJson(req.body(), Map.class);
@@ -35,28 +35,28 @@ public class UserController {
 
             User user = dataStore.login(username, password);
             if (user != null) {
-                // 生成简单的会话token
+                // Generate simple session tokens
                 String token = generateToken();
                 sessions.put(token, user.getId());
                 
                 Map<String, Object> result = new HashMap<>();
                 result.put("token", token);
                 result.put("user", sanitizeUser(user));
-                return gson.toJson(ApiResponse.success("登录成功", result));
+                return gson.toJson(ApiResponse.success("Login is successful", result));
             } else {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("用户名或密码错误"));
+                return gson.toJson(ApiResponse.error("Incorrect username or password"));
             }
         });
 
-        // 用户注册
+        // User registration
         post("/api/auth/register", (req, res) -> {
             res.type("application/json");
             User newUser = gson.fromJson(req.body(), User.class);
             
             if (newUser.getUsername() == null || newUser.getPassword() == null) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("用户名和密码不能为空"));
+                return gson.toJson(ApiResponse.error("The username and password cannot be empty"));
             }
 
             User user = dataStore.register(newUser);
@@ -67,14 +67,14 @@ public class UserController {
                 Map<String, Object> result = new HashMap<>();
                 result.put("token", token);
                 result.put("user", sanitizeUser(user));
-                return gson.toJson(ApiResponse.success("注册成功", result));
+                return gson.toJson(ApiResponse.success("Registration is successful", result));
             } else {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("用户名已存在"));
+                return gson.toJson(ApiResponse.error("The username already exists"));
             }
         });
 
-        // 退出登录
+        // Log out
         post("/api/auth/logout", (req, res) -> {
             res.type("application/json");
             String token = req.headers("Authorization");
@@ -82,16 +82,16 @@ public class UserController {
                 token = token.substring(7);
                 sessions.remove(token);
             }
-            return gson.toJson(ApiResponse.success("退出成功", null));
+            return gson.toJson(ApiResponse.success("Exit is successful", null));
         });
 
-        // 获取当前用户信息
+        // Get current user information
         get("/api/auth/me", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
@@ -99,23 +99,23 @@ public class UserController {
                 return gson.toJson(ApiResponse.success(sanitizeUser(user)));
             } else {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
         });
 
-        // 更新用户信息
+        // Update user information
         put("/api/auth/me", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             Map<String, String> updates = gson.fromJson(req.body(), Map.class);
@@ -124,67 +124,67 @@ public class UserController {
             if (updates.containsKey("address")) user.setAddress(updates.get("address"));
             
             dataStore.updateUser(user);
-            return gson.toJson(ApiResponse.success("更新成功", sanitizeUser(user)));
+            return gson.toJson(ApiResponse.success("The update was successful", sanitizeUser(user)));
         });
         
-        // 获取用户地址列表
+        // Get a list of user addresses
         get("/api/addresses", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             List<Address> addresses = user.getAddresses();
             return gson.toJson(ApiResponse.success(addresses));
         });
         
-        // 添加新地址
+        // Add a new address
         post("/api/addresses", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             Address newAddress = gson.fromJson(req.body(), Address.class);
             if (newAddress.getFullName() == null || newAddress.getAddress() == null) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("收货人姓名和地址不能为空"));
+                return gson.toJson(ApiResponse.error("The consignee's name and address cannot be blank"));
             }
             
             user.addAddress(newAddress);
             dataStore.updateUser(user);
-            return gson.toJson(ApiResponse.success("地址添加成功", newAddress));
+            return gson.toJson(ApiResponse.success("The address was added successfully", newAddress));
         });
         
-        // 更新地址
+        // Update address
         put("/api/addresses/:id", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             String addressId = req.params(":id");
@@ -195,7 +195,7 @@ public class UserController {
             boolean found = false;
             for (int i = 0; i < addresses.size(); i++) {
                 if (addresses.get(i).getId().equals(addressId)) {
-                    // 如果设为默认，取消其他默认
+                    // If set to default, cancel the other defaults
                     if (updatedAddress.isDefault()) {
                         for (Address addr : addresses) {
                             addr.setDefault(false);
@@ -209,26 +209,26 @@ public class UserController {
             
             if (!found) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("地址不存在"));
+                return gson.toJson(ApiResponse.error("The address does not exist"));
             }
             
             dataStore.updateUser(user);
-            return gson.toJson(ApiResponse.success("地址更新成功", updatedAddress));
+            return gson.toJson(ApiResponse.success("The address was successfully updated", updatedAddress));
         });
         
-        // 删除地址
+        // Delete address
         delete("/api/addresses/:id", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             String addressId = req.params(":id");
@@ -236,26 +236,26 @@ public class UserController {
             
             if (!removed) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("地址不存在"));
+                return gson.toJson(ApiResponse.error("The address does not exist"));
             }
             
             dataStore.updateUser(user);
-            return gson.toJson(ApiResponse.success("地址删除成功", null));
+            return gson.toJson(ApiResponse.success("The address was successfully deleted", null));
         });
         
-        // 设置默认地址
+        // Set the default address
         put("/api/addresses/:id/default", (req, res) -> {
             res.type("application/json");
             String userId = getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             User user = dataStore.getUserById(userId);
             if (user == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("用户不存在"));
+                return gson.toJson(ApiResponse.error("The user does not exist"));
             }
             
             String addressId = req.params(":id");
@@ -273,11 +273,11 @@ public class UserController {
             
             if (!found) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("地址不存在"));
+                return gson.toJson(ApiResponse.error("The address does not exist"));
             }
             
             dataStore.updateUser(user);
-            return gson.toJson(ApiResponse.success("已设为默认地址", null));
+            return gson.toJson(ApiResponse.success("is set as the default address", null));
         });
     }
 

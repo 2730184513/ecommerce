@@ -1,16 +1,16 @@
 package com.furniture.model;
 
 /**
- * 购物车项实体类
+ * Shopping cart item entity class
  */
 public class CartItem {
     private String productId;
     private String productName;
-    private double price;        // 原价
-    private double discount;     // 折扣率
+    private double price;        // original price
+    private double discount;     // Discount rate
     private int quantity;
     private String imageUrl;
-    private int stock;           // 库存
+    private int stock;           // Stock
 
     public CartItem() {}
 
@@ -47,7 +47,7 @@ public class CartItem {
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
 
-    // 获取折后单价
+    // Get the discounted unit price
     public double getDiscountedPrice() {
         return price * (1 - discount);
     }
@@ -56,12 +56,12 @@ public class CartItem {
         return price * quantity;
     }
 
-    // 获取折后小计
+    // Get the subtotal after the discount
     public double getDiscountedSubtotal() {
         return getDiscountedPrice() * quantity;
     }
 
-    // 获取节省金额
+    // Get the amount saved
     public double getSavings() {
         return getSubtotal() - getDiscountedSubtotal();
     }

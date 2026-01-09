@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 /**
- * 用户数据管理器
+ * User Data Manager
  */
 public class UserManager {
     private final Gson gson;
@@ -35,7 +35,7 @@ public class UserManager {
             this.users = data != null && data.get("users") != null ? data.get("users") : new ArrayList<>();
         } catch (Exception e) {
             this.users = new ArrayList<>();
-            System.err.println("加载用户数据失败: " + e.getMessage());
+            System.err.println("Failed to load user data:" + e.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class UserManager {
             data.put("users", users);
             Files.write(Paths.get(dataPath + "users.json"), gson.toJson(data).getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
-            System.err.println("保存用户数据失败: " + e.getMessage());
+            System.err.println("Failed to save user data:" + e.getMessage());
         }
     }
 
@@ -71,15 +71,15 @@ public class UserManager {
     }
 
     public User register(User newUser) {
-        // 检查用户名是否已存在
+        // Check if the username already exists
         if (getUserByUsername(newUser.getUsername()) != null) {
             return null;
         }
-        // 生成新ID
+        // Generate a new ID
         String newId = "U" + String.format("%03d", users.size() + 1);
         newUser.setId(newId);
         newUser.setCreatedAt(java.time.LocalDateTime.now().toString().replace("T", " ").substring(0, 19));
-        // 初始化地址列表
+        // Initialize the address list
         if (newUser.getAddresses() == null) {
             newUser.setAddresses(new ArrayList<>());
         }
@@ -98,7 +98,7 @@ public class UserManager {
         }
     }
 
-    // 地址管理
+    // Address management
     public List<Address> getAddresses(String userId) {
         User user = getUserById(userId);
         return user != null ? user.getAddresses() : new ArrayList<>();
@@ -106,7 +106,9 @@ public class UserManager {
 
     public Address addAddress(String userId, Address address) {
         User user = getUserById(userId);
-        if (user == null) return null;
+        if (user == null) {
+	        return null;
+        }
         
         user.addAddress(address);
         saveUsers();
@@ -115,7 +117,9 @@ public class UserManager {
 
     public boolean removeAddress(String userId, String addressId) {
         User user = getUserById(userId);
-        if (user == null) return false;
+        if (user == null) {
+	        return false;
+        }
         
         boolean result = user.removeAddress(addressId);
         if (result) {
@@ -126,7 +130,9 @@ public class UserManager {
 
     public boolean setDefaultAddress(String userId, String addressId) {
         User user = getUserById(userId);
-        if (user == null) return false;
+        if (user == null) {
+	        return false;
+        }
         
         List<Address> addresses = user.getAddresses();
         boolean found = false;
