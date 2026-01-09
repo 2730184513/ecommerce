@@ -3,15 +3,15 @@ package com.furniture.model;
 import java.util.List;
 
 /**
- * 订单实体类
+ * Order entity class
  */
 public class Order {
     private String id;
     private String userId;
     private List<CartItem> items;
-    private double totalAmount;       // 折后总价
-    private double originalTotal;     // 原价总额
-    private double discountTotal;     // 折扣总额
+    private double totalAmount;       // Total price after discount
+    private double originalTotal;     // Total original price
+    private double discountTotal;     // Total discount
     private String status;
     private String shippingAddress;
     private String paymentMethod;

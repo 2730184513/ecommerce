@@ -65,7 +65,7 @@ function displayProduct(product) {
     $('#productName').text(product.name);
     $('#productCategory').text(product.category);
     
-    // 显示价格（含折扣）
+    // Show price (with discount)
     const hasDiscount = product.discount && product.discount > 0;
     if (hasDiscount) {
         const discountedPrice = product.price * (1 - product.discount);

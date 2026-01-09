@@ -1,14 +1,14 @@
 package com.furniture.model;
 
 /**
- * 商品实体类
+ * Commodity entity class
  */
 public class Product {
     private String id;
     private String name;
     private String description;
     private double price;
-    private double discount; // 折扣率 0-1, 例如 0.2 表示 20% 折扣
+    private double discount; // A discount rate of 0-1, e.g. 0.2 represents a 20% discount
     private String category;
     private String imageUrl;
     private int stock;
@@ -72,7 +72,7 @@ public class Product {
     public double getDiscount() { return discount; }
     public void setDiscount(double discount) { this.discount = discount; }
 
-    // 获取折后价
+//    Get discounted prices
     public double getDiscountedPrice() {
         return price * (1 - discount);
     }

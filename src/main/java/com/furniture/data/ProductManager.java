@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 商品数据管理器
+ * Product Data Manager
  */
 public class ProductManager {
     private final Gson gson;
@@ -35,7 +35,7 @@ public class ProductManager {
             this.products = data != null && data.get("products") != null ? data.get("products") : new ArrayList<>();
         } catch (Exception e) {
             this.products = new ArrayList<>();
-            System.err.println("加载商品数据失败: " + e.getMessage());
+            System.err.println("Failed to load product data: " + e.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class ProductManager {
             data.put("products", products);
             Files.write(Paths.get(dataPath + "products.json"), gson.toJson(data).getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
-            System.err.println("保存商品数据失败: " + e.getMessage());
+            System.err.println("Failed to save product data: " + e.getMessage());
         }
     }
 
@@ -82,7 +82,7 @@ public class ProductManager {
                 })
                 .collect(Collectors.toList());
 
-        // 排序
+        // Sort
         if (sortBy != null) {
             switch (sortBy) {
                 case "price_asc":
@@ -112,10 +112,14 @@ public class ProductManager {
 
     public boolean updateStock(String productId, int quantityToReduce) {
         Product product = getProductById(productId);
-        if (product == null) return false;
+        if (product == null) {
+	        return false;
+        }
         
         int newStock = product.getStock() - quantityToReduce;
-        if (newStock < 0) return false;
+        if (newStock < 0) {
+	        return false;
+        }
         
         product.setStock(newStock);
         saveProducts();

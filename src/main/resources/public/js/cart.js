@@ -1,8 +1,8 @@
 /**
- * Cart Page Script - 带有选择功能和库存检查
+ * Cart Page Script - With selection function and inventory check
  */
 
-// 存储选中的商品
+// Store the selected items
 let selectedItems = new Set();
 let cartData = null;
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
     
     loadCart();
     
-    // 全选/取消全选
+    // Select All/Cancel All
     $('#selectAllCheckbox').on('change', function() {
         const isChecked = $(this).is(':checked');
         $('.item-checkbox').prop('checked', isChecked);
@@ -44,24 +44,24 @@ $(document).ready(function() {
         }
     });
     
-    // Proceed to checkout - 检查库存后跳转
+    // Proceed to checkout - Check inventory and then jump
     $('#checkoutBtn').on('click', async function() {
         if (selectedItems.size === 0) {
             Utils.showToast('Please select items to checkout', 'warning');
             return;
         }
         
-        // 获取选中的商品
+        // Get the selected product
         const itemsToCheck = cartData.items.filter(item => selectedItems.has(item.productId));
         
-        // 检查库存
+        // Check inventory
         const stockResult = await API.checkStock(itemsToCheck);
         if (!stockResult.success) {
             Utils.showToast(stockResult.message || 'Some items are out of stock', 'error');
             return;
         }
         
-        // 保存选中的商品到 sessionStorage
+        // Save the selected items to sessionStorage
         sessionStorage.setItem('checkoutItems', JSON.stringify(itemsToCheck));
         window.location.href = '/checkout.html';
     });
@@ -108,7 +108,7 @@ function displayCart(cart) {
         const originalSubtotal = originalPrice * item.quantity;
         const discountedSubtotal = discountedPrice * item.quantity;
         
-        // 库存提示
+        // Stock tips
         const stockWarning = item.stock !== undefined && item.quantity > item.stock;
         const stockClass = stockWarning ? 'text-danger' : '';
         const stockInfo = item.stock !== undefined ? 
@@ -168,14 +168,14 @@ function displayCart(cart) {
     // Update cart item count
     $('#cartItemCount').text(totalQuantity);
     
-    // 更新全选框状态
+    // Update the full marquee status
     updateSelectAllCheckbox();
     
     // Update summary
     updateSummary();
 }
 
-// 更新全选复选框状态
+// Update the Select All checkbox status
 function updateSelectAllCheckbox() {
     if (!cartData || !cartData.items || cartData.items.length === 0) {
         $('#selectAllCheckbox').prop('checked', false);
@@ -186,7 +186,7 @@ function updateSelectAllCheckbox() {
     $('#selectAllCheckbox').prop('checked', allSelected);
 }
 
-// 更新订单摘要
+// Update the order summary
 function updateSummary() {
     if (!cartData || !cartData.items) {
         $('#selectedCount').text('Selected: 0');
@@ -225,11 +225,11 @@ function updateSummary() {
     $('#subtotal').text(Utils.formatPrice(discountedTotal));
     $('#totalAmount').text(Utils.formatPrice(discountedTotal));
     
-    // 如果没有选中任何商品，禁用结算按钮
+    // If no items are selected, disable the checkout button
     $('#checkoutBtn').prop('disabled', selectedCount === 0);
 }
 
-// 单个商品选择变化
+// Individual product selection changes
 $(document).on('change', '.item-checkbox', function() {
     const productId = $(this).data('id');
     const isChecked = $(this).is(':checked');
@@ -268,7 +268,7 @@ $(document).on('click', '.increase-qty', async function() {
     const input = $(this).siblings('.item-quantity');
     let quantity = parseInt(input.val()) + 1;
     
-    // 检查是否超过库存
+    // Check if you exceed inventory
     const item = cartData.items.find(i => i.productId === productId);
     if (item && item.stock !== undefined && quantity > item.stock) {
         Utils.showToast(`Cannot exceed stock limit (${item.stock})`, 'warning');
@@ -284,7 +284,7 @@ $(document).on('change', '.item-quantity', async function() {
     let quantity = parseInt($(this).val()) || 1;
     if (quantity < 1) quantity = 1;
     
-    // 检查是否超过库存
+    // Check if you exceed inventory
     const item = cartData.items.find(i => i.productId === productId);
     if (item && item.stock !== undefined && quantity > item.stock) {
         Utils.showToast(`Cannot exceed stock limit (${item.stock})`, 'warning');

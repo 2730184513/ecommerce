@@ -4,60 +4,60 @@ import com.furniture.controller.*;
 import static spark.Spark.*;
 
 /**
- * 主应用程序入口
+ * Main application entry
  */
 public class Application {
     public static void main(String[] args) {
-        // 配置端口
+        // Configure ports
         port(8080);
         
-        // 配置静态文件目录
+        // Configure the static file directory
         staticFiles.location("/public");
         
-        // 配置CORS
+        // Configure CORS
         before((req, res) -> {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
         });
         
-        // 处理OPTIONS请求
+        // Process OPTIONS requests
         options("/*", (req, res) -> {
             res.status(200);
             return "";
         });
         
-        // 注册各模块路由
+        // Register the routes for each module
         new ProductController().registerRoutes();
         new UserController().registerRoutes();
         new CartController().registerRoutes();
         new OrderController().registerRoutes();
         
-        // 首页重定向
+        // Home page redirect
         get("/", (req, res) -> {
             res.redirect("/index.html");
             return null;
         });
         
-        // 全局异常处理
+        // Global exception handling
         exception(Exception.class, (e, req, res) -> {
             res.status(500);
             res.type("application/json");
-            res.body("{\"success\":false,\"message\":\"服务器内部错误: " + e.getMessage() + "\"}");
+            res.body("{\"success\":false,\"message\":\"Server internal error: " + e.getMessage() + "\"}");
         });
         
-        // 404处理
+        // 404 treatment
         notFound((req, res) -> {
             res.type("application/json");
-            return "{\"success\":false,\"message\":\"接口不存在\"}";
+            return "{\"success\":false,\"message\":\"The interface does not exist\"}";
         });
         
         System.out.println("=================================");
-        System.out.println("  家具电商平台启动成功！");
-        System.out.println("  访问地址: http://localhost:8080");
+        System.out.println("  The furniture e-commerce platform was successfully launched!");
+        System.out.println("  Access address: http://localhost:8080");
         System.out.println("=================================");
         
-        // 等待 Spark 服务器启动并保持运行
+        // Wait for the Spark server to start and stay running
         awaitInitialization();
     }
 }

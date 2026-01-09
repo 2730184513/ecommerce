@@ -1,5 +1,5 @@
 /**
- * Checkout Page Script - 支持地址选择和折扣
+ * Checkout Page Script - Support for address selection and discounts
  */
 let checkoutItems = null;
 let savedAddresses = [];
@@ -15,7 +15,7 @@ $(document).ready(function() {
     loadUserInfo();
     loadSavedAddresses();
     
-    // 切换使用新地址
+    // Switch to a new address
     $('#useNewAddress').on('change', function() {
         const useNew = $(this).is(':checked');
         if (useNew) {
@@ -32,13 +32,13 @@ $(document).ready(function() {
         }
     });
     
-    // 管理地址按钮
+    // Manage Addresses button
     $('#manageAddressesBtn').on('click', function() {
         loadAddressListInModal();
         new bootstrap.Modal(document.getElementById('addressModal')).show();
     });
     
-    // 添加地址表单提交
+    // Add address form submission
     $('#addAddressForm').on('submit', async function(e) {
         e.preventDefault();
         await addNewAddress();
@@ -50,7 +50,7 @@ $(document).ready(function() {
     });
 });
 
-// 从 sessionStorage 加载选中的商品
+// Load the selected item from sessionStorage
 function loadCheckoutItems() {
     const itemsStr = sessionStorage.getItem('checkoutItems');
     if (itemsStr) {
@@ -62,12 +62,12 @@ function loadCheckoutItems() {
         }
         displayOrderItems();
     } else {
-        // 如果没有选中的商品，则加载整个购物车
+        // If there are no selected items, the entire cart is loaded
         loadFullCart();
     }
 }
 
-// 加载整个购物车（兼容旧逻辑）
+// Load the entire cart (compatible with old logic)
 async function loadFullCart() {
     const result = await API.getCart();
     
@@ -185,13 +185,13 @@ function displaySavedAddresses() {
         }
     });
     
-    // 如果有保存的地址，默认隐藏新地址表单
+    // If there are saved addresses, the new address form is hidden by default
     if (savedAddresses.length > 0) {
         $('#newAddressForm').hide();
         $('#saveAddressOption').hide();
     }
     
-    // 点击地址选项
+    // Click on the address option
     $('.address-option').on('click', function() {
         const addrId = $(this).data('address-id');
         selectAddress(addrId);
@@ -367,7 +367,7 @@ async function submitOrder() {
         return;
     }
     
-    // 如果选择保存新地址
+    // If you choose to save the new address
     if (saveAddress && !selectedAddressId) {
         const addrResult = await API.addAddress({
             name: 'Shipping Address',
@@ -395,13 +395,13 @@ async function submitOrder() {
         shippingAddress: shippingAddress,
         paymentMethod: paymentMethod,
         notes: notes,
-        items: checkoutItems  // 传递选中的商品
+        items: checkoutItems  // Pass the selected item
     };
     
     const result = await API.createOrder(orderData);
     
     if (result.success && result.data) {
-        // 清除 sessionStorage
+        // remove sessionStorage
         sessionStorage.removeItem('checkoutItems');
         
         // Show success modal

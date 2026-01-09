@@ -10,7 +10,7 @@ import java.util.List;
 import static spark.Spark.*;
 
 /**
- * 订单API控制器
+ * Order API controller
  */
 public class OrderController {
     private final DataStore dataStore;
@@ -22,83 +22,83 @@ public class OrderController {
     }
 
     public void registerRoutes() {
-        // 创建订单（结账）- 支持选择性结算
+        // Create Order (Checkout) - Support selective billing
         post("/api/orders", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
-            // 解析订单信息
+            // Parse order information
             Order orderInfo = gson.fromJson(req.body(), Order.class);
             if (orderInfo.getShippingAddress() == null || orderInfo.getShippingAddress().isEmpty()) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("请填写收货地址"));
+                return gson.toJson(ApiResponse.error("Please fill in the delivery address"));
             }
             
-            // 获取要结算的商品（前端传来的选中商品）
+            // Get the item you want to settle (selected product from the front end)
             List<CartItem> selectedItems = orderInfo.getItems();
             if (selectedItems == null || selectedItems.isEmpty()) {
-                // 如果没有指定，则结算全部购物车
+                // If not specified, the entire cart is settled
                 selectedItems = dataStore.getCart(userId);
             }
             
             if (selectedItems.isEmpty()) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("请选择要结算的商品"));
+                return gson.toJson(ApiResponse.error("Select the product you want to settle"));
             }
             
-            // 检查库存
+            // Check inventory
             for (CartItem item : selectedItems) {
                 if (!dataStore.checkStock(item.getProductId(), item.getQuantity())) {
                     Product p = dataStore.getProductById(item.getProductId());
-                    String stockInfo = p != null ? "（库存: " + p.getStock() + "）" : "";
+                    String stockInfo = p != null ? "(Stock: " + p.getStock() + ")" : "";
                     res.status(400);
-                    return gson.toJson(ApiResponse.error("商品 " + item.getProductName() + " 库存不足" + stockInfo));
+                    return gson.toJson(ApiResponse.error("Goods " + item.getProductName() + " Insufficient stock" + stockInfo));
                 }
             }
             
-            // 创建订单
+            // Create an order
             Order order = new Order();
             order.setUserId(userId);
             order.setItems(selectedItems);
             order.setShippingAddress(orderInfo.getShippingAddress());
-            order.setPaymentMethod(orderInfo.getPaymentMethod() != null ? orderInfo.getPaymentMethod() : "在线支付");
+            order.setPaymentMethod(orderInfo.getPaymentMethod() != null ? orderInfo.getPaymentMethod() : "Online payment");
             order.setContactName(orderInfo.getContactName());
             order.setContactPhone(orderInfo.getContactPhone());
             
             Order createdOrder = dataStore.createOrder(order);
             
-            // 从购物车中移除已结算的商品
+            // Remove checked items from your cart
             for (CartItem item : selectedItems) {
                 dataStore.removeFromCart(userId, item.getProductId());
             }
             
-            return gson.toJson(ApiResponse.success("订单创建成功", createdOrder));
+            return gson.toJson(ApiResponse.success("The order was successfully created", createdOrder));
         });
 
-        // 获取用户所有订单
+        // Get all orders from users
         get("/api/orders", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             List<Order> orders = dataStore.getOrdersByUserId(userId);
             return gson.toJson(ApiResponse.success(orders));
         });
 
-        // 获取订单详情
+        // Get your order details
         get("/api/orders/:id", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             String orderId = req.params(":id");
@@ -106,32 +106,32 @@ public class OrderController {
             
             if (order == null) {
                 res.status(404);
-                return gson.toJson(ApiResponse.error("订单不存在"));
+                return gson.toJson(ApiResponse.error("The order does not exist"));
             }
             
-            // 验证订单所属用户
+            // Verify the user to whom the order belongs
             if (!order.getUserId().equals(userId)) {
                 res.status(403);
-                return gson.toJson(ApiResponse.error("无权查看此订单"));
+                return gson.toJson(ApiResponse.error("No access to view this order"));
             }
             
             return gson.toJson(ApiResponse.success(order));
         });
         
-        // 检查库存
+        // Check inventory
         post("/api/cart/check-stock", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
-            // 解析要检查的商品列表
+            // Parse the list of products to check
             CartItem[] items = gson.fromJson(req.body(), CartItem[].class);
             if (items == null || items.length == 0) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("请提供要检查的商品"));
+                return gson.toJson(ApiResponse.error("Please provide the product to be checked"));
             }
             
             StringBuilder errorMsg = new StringBuilder();
@@ -143,11 +143,11 @@ public class OrderController {
                     Product p = dataStore.getProductById(item.getProductId());
                     if (p != null) {
                         errorMsg.append(item.getProductName())
-                                .append(" 库存不足（当前库存: ")
+                                .append(" Insufficient Inventory (Current Stock: ")
                                 .append(p.getStock())
-                                .append("，需要: ")
+                                .append(", need: ")
                                 .append(item.getQuantity())
-                                .append("）\n");
+                                .append(")\n");
                     }
                 }
             }
@@ -157,7 +157,7 @@ public class OrderController {
                 return gson.toJson(ApiResponse.error(errorMsg.toString().trim()));
             }
             
-            return gson.toJson(ApiResponse.success("库存充足"));
+            return gson.toJson(ApiResponse.success("Sufficient inventory"));
         });
     }
 }

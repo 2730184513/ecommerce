@@ -6,8 +6,8 @@ import java.io.File;
 import java.util.List;
 
 /**
- * 数据存储类 - 统一的数据访问入口
- * 持有并协调 ProductManager, UserManager, CartManager, OrderManager
+ * Data storage class - Unified data access portal
+ * Hold and coordinate ProductManager, UserManager, CartManager, and OrderManager
  */
 public class DataStore {
     private static DataStore instance;
@@ -21,7 +21,7 @@ public class DataStore {
     private DataStore() {
         this.dataPath = getDataPath();
         
-        // 初始化各个管理器
+        // Initialize the individual managers
         this.productManager = new ProductManager(dataPath);
         this.userManager = new UserManager(dataPath);
         this.cartManager = new CartManager(dataPath, productManager);
@@ -44,7 +44,7 @@ public class DataStore {
         return path;
     }
 
-    // ==================== 商品相关操作 ====================
+    // Actions related to the product
 
     public List<Product> getAllProducts() {
         return productManager.getAllProducts();
@@ -71,7 +71,7 @@ public class DataStore {
         return productManager.checkStock(productId, quantity);
     }
 
-    // ==================== 用户相关操作 ====================
+    // User-related actions
 
     public User getUserById(String id) {
         return userManager.getUserById(id);
@@ -93,7 +93,7 @@ public class DataStore {
         userManager.updateUser(user);
     }
 
-    // 地址管理
+    // Address management
     public List<Address> getAddresses(String userId) {
         return userManager.getAddresses(userId);
     }
@@ -110,7 +110,7 @@ public class DataStore {
         return userManager.setDefaultAddress(userId, addressId);
     }
 
-    // ==================== 购物车相关操作 ====================
+    // Shopping cart-related actions
 
     public List<CartItem> getCart(String userId) {
         return cartManager.getCart(userId);
@@ -136,7 +136,7 @@ public class DataStore {
         return cartManager.getCartTotal(userId);
     }
 
-    // ==================== 订单相关操作 ====================
+    // Order-related operations
 
     public Order createOrder(Order order) {
         return orderManager.createOrder(order);

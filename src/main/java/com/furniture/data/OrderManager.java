@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 订单数据管理器
+ * Order Data Manager
  */
 public class OrderManager {
     private final Gson gson;
@@ -40,7 +40,7 @@ public class OrderManager {
             this.orders = data != null && data.get("orders") != null ? data.get("orders") : new ArrayList<>();
         } catch (Exception e) {
             this.orders = new ArrayList<>();
-            System.err.println("加载订单数据失败: " + e.getMessage());
+            System.err.println("Failed to load order data: " + e.getMessage());
         }
     }
 
@@ -50,31 +50,31 @@ public class OrderManager {
             data.put("orders", orders);
             Files.write(Paths.get(dataPath + "orders.json"), gson.toJson(data).getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
-            System.err.println("保存订单数据失败: " + e.getMessage());
+            System.err.println("Failed to save order data:" + e.getMessage());
         }
     }
 
     public Order createOrder(Order order) {
-        // 生成订单ID
+        // Generate an order ID
         String orderId = "ORD" + System.currentTimeMillis();
         order.setId(orderId);
-        order.setStatus("待支付");
+        order.setStatus("Pending payment");
         order.setCreatedAt(java.time.LocalDateTime.now().toString().replace("T", " ").substring(0, 19));
         
-        // 计算总金额（折后）
+        // Calculate the total amount (after discount)
         double total = order.getItems().stream()
                 .mapToDouble(item -> item.getPrice() * (1 - item.getDiscount()) * item.getQuantity())
                 .sum();
         order.setTotalAmount(total);
         
-        // 计算原价总额和折扣总额
+        // Calculate the total original price and the total discount
         double originalTotal = order.getItems().stream()
                 .mapToDouble(item -> item.getPrice() * item.getQuantity())
                 .sum();
         order.setOriginalTotal(originalTotal);
         order.setDiscountTotal(originalTotal - total);
         
-        // 减少库存
+        // Reduce inventory
         for (CartItem item : order.getItems()) {
             productManager.updateStock(item.getProductId(), item.getQuantity());
         }
@@ -82,7 +82,7 @@ public class OrderManager {
         orders.add(order);
         saveOrders();
         
-        // 从购物车中移除已购买的商品
+        // Remove the purchased item from the cart
         cartManager.removeItems(order.getUserId(), order.getItems());
         
         return order;

@@ -52,25 +52,25 @@ public class CartController {
             CartItem item = gson.fromJson(req.body(), CartItem.class);
             if (item.getProductId() == null || item.getQuantity() <= 0) {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("参数错误"));
+                return gson.toJson(ApiResponse.error("Incorrect parameters"));
             }
             
             boolean success = dataStore.addToCart(userId, item);
             if (success) {
-                return gson.toJson(ApiResponse.success("添加成功", dataStore.getCart(userId)));
+                return gson.toJson(ApiResponse.success("Add successfully", dataStore.getCart(userId)));
             } else {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("添加失败"));
+                return gson.toJson(ApiResponse.error("Failed to add"));
             }
         });
 
-        // 更新购物车商品数量
+        // Update the cart quantity
         put("/api/cart/:productId", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             String productId = req.params(":productId");
@@ -79,47 +79,47 @@ public class CartController {
             
             boolean success = dataStore.updateCartItem(userId, productId, quantity);
             if (success) {
-                return gson.toJson(ApiResponse.success("更新成功", dataStore.getCart(userId)));
+                return gson.toJson(ApiResponse.success("The update was successful", dataStore.getCart(userId)));
             } else {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("更新失败"));
+                return gson.toJson(ApiResponse.error("Update failed"));
             }
         });
 
-        // 删除购物车商品
+        // Delete cart items
         delete("/api/cart/:productId", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             String productId = req.params(":productId");
             boolean success = dataStore.removeFromCart(userId, productId);
             if (success) {
-                return gson.toJson(ApiResponse.success("删除成功", dataStore.getCart(userId)));
+                return gson.toJson(ApiResponse.success("Delete successful", dataStore.getCart(userId)));
             } else {
                 res.status(400);
-                return gson.toJson(ApiResponse.error("删除失败"));
+                return gson.toJson(ApiResponse.error("Delete failed"));
             }
         });
 
-        // 清空购物车
+        // Empty your cart
         delete("/api/cart", (req, res) -> {
             res.type("application/json");
             String userId = UserController.getCurrentUserId(req.headers("Authorization"));
             if (userId == null) {
                 res.status(401);
-                return gson.toJson(ApiResponse.error("请先登录"));
+                return gson.toJson(ApiResponse.error("Please log in first"));
             }
             
             dataStore.clearCart(userId);
-            return gson.toJson(ApiResponse.success("清空成功", null));
+            return gson.toJson(ApiResponse.success("Emptying successfully", null));
         });
     }
 
-    // 购物车响应包装类
+    // Shopping cart response packaging
     private static class CartResponse {
         private List<CartItem> items;
         private double total;
