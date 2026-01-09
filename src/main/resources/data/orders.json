@@ -80,7 +80,7 @@
       "totalAmount": 597.0,
       "originalTotal": 0.0,
       "discountTotal": 0.0,
-      "status": "待支付",
+      "status": "Pending payment",
       "shippingAddress": "456 Oak Street, Los Angeles, CA 90001, penang, batu kawan 14110",
       "paymentMethod": "credit_card",
       "createdAt": "2025-12-06 20:26:00",
@@ -195,6 +195,39 @@
       "shippingAddress": "Demo Address, Demo City, DC 00000",
       "paymentMethod": "credit_card",
       "createdAt": "2025-12-06 21:43:35",
+      "contactName": "Demo User",
+      "contactPhone": "1-800-000-0000"
+    },
+    {
+      "id": "ORD1767985528877",
+      "userId": "U000",
+      "items": [
+        {
+          "productId": "P005",
+          "productName": "Luxury Hybrid Mattress",
+          "price": 999.0,
+          "discount": 0.2,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w\u003d400",
+          "stock": 3
+        },
+        {
+          "productId": "P008",
+          "productName": "Ergonomic Office Chair",
+          "price": 549.0,
+          "discount": 0.25,
+          "quantity": 1,
+          "imageUrl": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w\u003d400",
+          "stock": 80
+        }
+      ],
+      "totalAmount": 1210.95,
+      "originalTotal": 1548.0,
+      "discountTotal": 337.04999999999995,
+      "status": "Pending payment",
+      "shippingAddress": "Demo Address, Demo City, DC 00000",
+      "paymentMethod": "credit_card",
+      "createdAt": "2026-01-10 03:05:28",
       "contactName": "Demo User",
       "contactPhone": "1-800-000-0000"
     }
