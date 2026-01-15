@@ -30,7 +30,7 @@
                             <p class="text-muted">Join us for the best furniture shopping experience</p>
                         </div>
 
-                        <form id="registerForm">
+                        <form id="registerForm" novalidate>
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label class="form-label">Username</label>
@@ -38,6 +38,7 @@
                                         <span class="input-group-text"><i class="bi bi-person"></i></span>
                                         <input type="text" class="form-control" id="username" placeholder="Choose a username" required>
                                     </div>
+                                    <div class="invalid-feedback" id="usernameError"></div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Email Address</label>
@@ -45,6 +46,7 @@
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                         <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
                                     </div>
+                                    <div class="invalid-feedback" id="emailError"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Password</label>
@@ -52,6 +54,17 @@
                                         <span class="input-group-text"><i class="bi bi-lock"></i></span>
                                         <input type="password" class="form-control" id="password" placeholder="Create password" required>
                                     </div>
+                                    <div class="password-strength mt-2" id="passwordStrength" style="display:none;">
+                                        <div class="d-flex align-items-center">
+                                            <small class="me-2">Strength:</small>
+                                            <div class="progress flex-grow-1" style="height: 6px;">
+                                                <div class="progress-bar" id="strengthBar" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                            <small class="ms-2" id="strengthText"></small>
+                                        </div>
+                                        <small class="text-muted" id="passwordHint"></small>
+                                    </div>
+                                    <div class="invalid-feedback" id="passwordError"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Confirm Password</label>
@@ -59,6 +72,7 @@
                                         <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
                                         <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
                                     </div>
+                                    <div class="invalid-feedback" id="confirmPasswordError"></div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Phone Number</label>
@@ -66,6 +80,7 @@
                                         <span class="input-group-text"><i class="bi bi-telephone"></i></span>
                                         <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
                                     </div>
+                                    <div class="invalid-feedback" id="phoneError"></div>
                                 </div>
                             </div>
 
