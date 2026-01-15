@@ -21,6 +21,74 @@
     border-color: var(--border-color);
 }
 
+/* Form Validation Styles */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+}
+
+.form-control.is-valid {
+    border-color: #198754;
+    background-image: none;
+}
+
+.input-group .form-control.is-invalid {
+    z-index: 1;
+}
+
+.input-group .form-control.is-valid {
+    z-index: 1;
+}
+
+.invalid-feedback {
+    display: none;
+    font-size: 0.875em;
+    color: #dc3545;
+    margin-top: 0.25rem;
+}
+
+.invalid-feedback.d-block {
+    display: block;
+}
+
+.valid-feedback {
+    display: none;
+    font-size: 0.875em;
+    color: #198754;
+    margin-top: 0.25rem;
+}
+
+.valid-feedback.d-block {
+    display: block;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.password-strength .progress {
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.password-strength small {
+    font-size: 0.75rem;
+}
+
+/* Address Card Styles */
+.address-card {
+    transition: all 0.2s ease;
+}
+
+.address-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.address-card.border-primary {
+    background-color: rgba(139, 69, 19, 0.02);
+}
+
 /* Quantity Selector */
 .quantity-selector .btn {
     padding: 0.25rem 0.5rem;
