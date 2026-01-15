@@ -117,13 +117,13 @@ ecommerce/
 
 SVG Image Link: [Furniture E-Commerce Platform - System Architecture](https://www.plantuml.com/plantuml/svg/RLH1R_Cs3BthLt3PuMiFoUux36sp1aEmhW7SdROTL9bDrCYI8SdRWg7_VQPjqd8R52ZCzvxqz2GoTodhcBl6WOxcP3EQt4LKt-KJDWYjqzQhTBQ-rL4tyAhD-HX3v-jjS272zxj7-YiK9ZHjyEXpbIyE8QB9sXyTAfLjxe5T5xqb2tXSRqFJO3G81wVpMuWDhA6wf8mDt9U7KMrlguy8grqCFgEluLTzmGWt3p7yap3Uhk0_1G3mX_Kr_hivvSRz1Jh1K8vC6qFTcPncaf6HDphccQDgmazepg4hE4P6FiGQOx7hM8-S2qVhPseeHoRYqQQCSIOP6VZXdwJUwxzrPQ9jCpprHtQOEE-mbsxjvZqDc_IV-rGmNJunHT_CSLxcw5kuERFmKysQ3_MXb76Xgs7roylBuOTzzVpRYeIddDlYkHxwZ-ArgbR7Cr2Q-S7kszPPexCDVlFUCt_wcqUVumKEmVfyEwLghzpADlIwu1p6SV_5dHp6jvqrykBR7Dsi-prX_2Jg25g8jZeMEycDBKNFiLvi9RqWieyh8NxMMSEzCPZIbHJ4LZb4x6-biZH6ENZOQQDh7A-cPeKi-d87JzhhOt41JyUupCy23iy2oSu23Yu2oSqA2KqIQHKwvAjEVLng5DXPXq27xfTmt7aytrFmSjPzNumy7QmWgPn9EbH1KYaa3wYmGqqq7UqRo4zA3h2le1a7J0s_7B1U_pJD59-lWCY6IXuVdXB2of4PwNAXS0Melf5z3a0JfGQCs76ank6LciGa8_dSSaaHDstPhsc7Rsbw1hZ11P1c5a3wbemA0_AJdbIyyR2a5fYt_mIpoITOh9Ou6OiJsKuTbfH8Q84qjA2IS85Ap2-ej2iviWaP3gtwPgaN9XEIprqvUOZV04uMOZU0x33R4LpuGOqj-XgziPXc-MOZ-U17ybXmd4SuBgyiKtVzzbtZrFy0)
 
-![architecture-Furniture E-Commerce Platform - System Architecture](./README.assets/architecture-Furniture E-Commerce Platform - System Architecture.png)
+![architecture-Furniture E-Commerce Platform - System Architecture](./README.assets/architecture-Furniture_E-Commerce_Platform_-_System_Architecture.png)
 
 ### Class Diagram
 
 SVG Image Link:[Furniture E-Commerce - Class Diagram](https://www.plantuml.com/plantuml/svg/lLXVRnit37_tfz2obwohW_Or28nwRZi4QBQWIPw6FJ0dzYn49zqaNegio7VVwVwOkahNs6lG5ZYVoPyayaTIPFp64pXgAhtuYRPOeQWrABFmTyhKuA0Ijr3SbSusHcwijaxy_FvT-1yX2WtUhucSkcq8pmjhhjI_A5uj5gH8etZVEAEeSIZUBJUsgj0LA9PY4vQ9jmfA1zLYKRVdG8dYwC9ArE83FA0x4byMGeZ-177fh6mA2hBXt_AAd3AbK38H6QWm4KhqXLCrAMjO9srpgr7KJXMOIANoHUix9LiLG5XQzv3QKa69DqwpGXaIdcnnbs0h87GAT6gegj1uPOrFB790BMAwkyDxXPyt4qD_BP7U3jQZl0pU7VzoAlfTEjHZzum8ll7ezcEtQP5PXclm_hDrwGgiGEaKlhKctGIaTEWZrpyeJsVhNheQrUZJe3W4GhcEM6Z1myBZuRCbuTugoH27bRt74TLlrO9khTK8PaeeVe96quXjKSDhdj11kH-ddngj_s1E3oI9EL3qa6vXFO7UM8ci6lmJoWzUvNtOWADpmYhZHDqNvBcSqx0x1nKQ9_O_3HXIT7YL9MxywUGXoSq-3Tatqh0IgdscPKcMGA-ho0NMMQTAPK1V1yoivx6MZV44rFXKl5LrtRwivxB06W8EG4vtcKsh6XugD7I1jBNoYG9ByxrM7z7NrdWykrunsvnilYcAdBrLAuGIMNuj911myNq9HAZYSTpXk0U42kH3lm4Vp_7bIx7dKdJEkcXXPW4pq5-UHw-Fn8lbKXozEZbvSRIh_rEnXTxdBWqPzZh0kCHE-zWeunUFKKTy2mHYtVcHwuj1VKNMeJWxkrAcr4ZMh2RqxtnYh3Ajp1IP9jb2Be6sh1WQxmKOAD69UlALOO614TFmEmE2doEWu7S6TEoC21jzoKIdH3hlNGXzZHsRtDThhGVZVG1rbJm8LWpq2AxOxe0d9oVpM6rBPOQaU2bspIBu7dUKKdb2Tnp4h6Mx0XFSQQONpAHtNTi8-bACe5nxwckpe_2uUxQWxZDVgzEWnidokxT6bErZZzIOi3HcXe_f0haZDkcy7kunqHuGFmOEmjyUpYNpEWWF3pIVlkd7F8LyVhzzX6ngsQAkGk_P1KePoiPeYyNTKyZiNFOSSGhxhBhI_2f2GJ4JdbGriXCqp7TI10ov6OR51FWy9SKX2B91p-Pc1vhlPFC2whFHtcdnhhgBpHzmTt8KmYOpKKXLttkJpAPVJEYuqpwhU99-xsoLEIjR3nh1CJR5i9FTUCImVdYQdVMUfs2wZLPz9pemflbsbmQzEs8cwgdkwPkUIUjNz-KNLsdaMOgF2dgkVV08iLokn9IB320SFwzbZdBQE91iGCnhQe8u3JTSD6tzFoYVmhXu9jjOGyvgZUuRFrKmA4v3zb6ERxaSJQw-ZxOXv7IORHNPKta4Z2-lePS9Zvv_RNXk8vEvRTCuXuQ-Jip-PVxI_l5iTadn8uzDyoQaudIsvH3d0SpL783ToY7YB5_NjLO5aB9cck2H8iYJA5UmQ-b__PrtDjwZCo5r_dJuWzDdyKp47c0cvMam4vIW7nTlqCYcqly1)
 
-![class_diagram-Furniture_E_Commerce___Class_Diagram](./docs/diagrams/class_diagram-Furniture_E_Commerce___Class_Diagram.png)
+![class_diagram-Furniture_E_Commerce___Class_Diagram](.\README.assets\class_diagram-Furniture_E_Commerce___Class_Diagram.png)
 
 ---
 
@@ -188,7 +188,7 @@ SVG Image Link:[Furniture E-Commerce - Class Diagram](https://www.plantuml.com/p
 
 #### 1. Registration with Field Validation
 
-![user_registration_flowchart-User Registration Flow](./README.assets/user_registration_flowchart-User Registration Flow.png)
+![user_registration_flowchart-User Registration Flow](./README.assets/user_registration_flowchart-User_Registration_Flow.png)
 
 ##### Frontend Validation (Client-Side)
 
@@ -262,7 +262,7 @@ public User register(User newUser) {
 
 #### 2. Address Management
 
-![user_address_flowchart-User Address Management Flow](./README.assets/user_address_flowchart-User Address Management Flow.png)
+![user_address_flowchart-User Address Management Flow](./README.assets/user_address_flowchart-User_Address_Management_Flow.png)
 
 The User model supports multiple addresses with default address handling:
 
@@ -320,7 +320,7 @@ public Address getDefaultAddress() {
 
 #### 1. Data Loading and Search/Filter
 
-![product_search_flowchart-Product Search & Filter Flow](./README.assets/product_search_flowchart-Product Search & Filter Flow.png)
+![product_search_flowchart-Product Search & Filter Flow](./README.assets/product_search_flowchart-Product_Search_&_Filter_Flow.png)
 
 ##### Data Loading (Application Startup)
 
@@ -416,7 +416,7 @@ async function loadProducts() {
 
 #### 2. Stock Validation
 
-![product_stock_flowchart-Product Stock Validation Flow](./README.assets/product_stock_flowchart-Product Stock Validation Flow.png)
+![product_stock_flowchart-Product Stock Validation Flow](./README.assets/product_stock_flowchart-Product_Stock_Validation_Flow.png)
 
 Stock validation occurs at two critical points:
 
@@ -486,7 +486,7 @@ public boolean updateStock(String productId, int quantityToReduce) {
 
 #### 1. Adding Products to Cart and Display
 
-![cart_add_flowchart-Add to Cart and Display Flow](./README.assets/cart_add_flowchart-Add to Cart and Display Flow.png)
+![cart_add_flowchart-Add to Cart and Display Flow](./README.assets/cart_add_flowchart-Add_to_Cart_and_Display_Flow.png)
 
 ##### Add to Cart Flow
 
